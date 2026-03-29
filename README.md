@@ -1,6 +1,7 @@
 # Financial Performance Analytics & Forecasting Platform
-
+<!--
 > **Built for HSBC FinOps / Financial Analyst Internship Applications**
+-->
 > Python · Pandas · Scikit-learn · SQLite · Matplotlib · Streamlit
 
 ---
