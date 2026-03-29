@@ -1,0 +1,24 @@
+# Financial Analytics Platform — Dependencies
+# =============================================
+# Core (required, always available)
+pandas>=1.5.0
+numpy>=1.23.0
+scikit-learn>=1.1.0
+scipy>=1.9.0
+matplotlib>=3.6.0
+seaborn>=0.12.0
+openpyxl>=3.0.10
+
+# Dashboard
+streamlit>=1.25.0
+
+# Database
+# SQLite is built into Python — no install needed
+
+# Optional: install when you have internet access
+# prophet>=1.1         # better time-series forecasting
+# statsmodels>=0.14    # ARIMA support
+# yfinance>=0.2        # Yahoo Finance API
+# alpha-vantage>=2.3   # Alpha Vantage API
+# fpdf2>=2.7           # PDF report generation
+# plotly>=5.0          # interactive charts (alternative to matplotlib)
