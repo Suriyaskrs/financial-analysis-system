@@ -352,44 +352,6 @@ To load your own financial CSV instead of the synthetic data:
 
 ---
 
-## Interview Talking Points (HSBC FinOps)
-
-### "Walk me through your project"
-
-> "I built a financial analytics platform that processes quarterly P&L data for five companies across five sectors. The pipeline automatically cleans the data, calculates five core KPIs including profit margin and return on assets, runs three forecasting models and picks the best one by MAPE, and detects anomalies using Z-score and Isolation Forest. Everything surfaces in a Streamlit dashboard with an SQL explorer page where I can run queries live."
-
----
-
-### "Why did you use SQLite instead of PostgreSQL?"
-
-> "For a local analytics project, SQLite eliminates setup friction and is fully SQL-compliant. The data_loader.py module is written so switching to PostgreSQL or MySQL is a two-line change — just update the connection string. In a production FinOps environment I'd use PostgreSQL or Snowflake."
-
----
-
-### "Explain profit margin. Why does it matter to a bank?"
-
-> "Profit margin is net profit divided by revenue. For a bank like HSBC, it tells you what proportion of income survives after all operating costs — a declining margin over quarters signals cost creep or revenue pressure before it shows up as a loss. It's one of the first metrics a FinOps team monitors in a budget review."
-
----
-
-### "What does your forecasting model actually do?"
-
-> "It uses seasonal trend decomposition — it separates the revenue series into a linear trend component and quarterly seasonal factors, then projects both forward. I also run polynomial regression and Holt's double exponential smoothing, and auto-select whichever achieves the lowest MAPE on the training data. On this dataset MAPE is between 2.5% and 7%, which is reasonable for quarterly financial data."
-
----
-
-### "How did you detect the anomaly in GlobalRetail?"
-
-> "I ran Z-score analysis across revenue, expenses, profit, and operating cost for each company independently. GlobalRetail Q2 2022 had a profit Z-score of -3.99, well past the SEVERE threshold of 3.0. The Isolation Forest confirmed it as a multivariate outlier. The root cause was a 45% spike in expenses in that quarter — visible in the anomaly timeline chart."
-
----
-
-### "What would you improve if you had more time?"
-
-> "Three things: first, connect to a live data source like Alpha Vantage for real company fundamentals. Second, replace the polynomial regression with Prophet or ARIMA for better handling of irregular seasonality. Third, add a risk scoring model that combines anomaly severity, leverage ratio, and revenue trend into a single per-company risk score — that would make the output more actionable for a FinOps team."
-
----
-
 ## Tech Stack Summary (for CV / Resume)
 
 ```
@@ -401,28 +363,6 @@ Database:     SQLite (schema.sql, 5 tables, indexed)
 Visualisation:Matplotlib, Seaborn
 Dashboard:    Streamlit (8 pages, sidebar controls)
 Reports:      OpenPyXL (7-sheet Excel workbook)
-```
-
----
-
-## Resume Description
-
-```
-Financial Performance Analytics & Forecasting Platform
-
-• Built a modular financial analytics system in Python processing 120 quarterly
-  records across 5 companies, automating KPI calculation (profit margin, ROA,
-  expense ratio, revenue growth) via a structured SQLite data pipeline.
-
-• Implemented time-series forecasting using seasonal decomposition, polynomial
-  regression, and Holt's exponential smoothing with auto-model selection by MAPE
-  (2.5–7% error on quarterly revenue forecasts).
-
-• Developed a multi-method anomaly detection engine (Z-score, IQR, Isolation
-  Forest) that identified a SEVERE expense spike (z = -3.99) in GlobalRetail Q2 2022.
-
-• Designed an 8-page interactive Streamlit dashboard with an SQL Explorer,
-  7-chart visualisation suite, and automated Excel/CSV reporting (openpyxl).
 ```
 
 ---
